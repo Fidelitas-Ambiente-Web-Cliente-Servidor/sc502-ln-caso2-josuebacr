@@ -18,11 +18,11 @@ class User
         return $result->fetch_assoc();
     }
 
-    public function create($username, $password)
+    public function create($username, $password, $nombre = '', $email = '')
     {
-        $query = "INSERT INTO usuarios (username, password, rol) VALUES (?, ?, 'usuario')";
+        $query = "INSERT INTO usuarios (username, nombre, email, password, rol) VALUES (?, ?, ?, ?, 'usuario')";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ss", $username,  $password);
+        $stmt->bind_param("ssss", $username, $nombre, $email, $password);
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }

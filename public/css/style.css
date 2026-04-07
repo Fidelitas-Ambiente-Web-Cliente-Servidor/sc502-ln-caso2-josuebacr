@@ -1,0 +1,19 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.table th {
+    font-size: 0.9rem;
+}
+
+#mensaje {
+    margin-bottom: 1rem;
+}
+
+.alert {
+    border-radius: 8px;
+}

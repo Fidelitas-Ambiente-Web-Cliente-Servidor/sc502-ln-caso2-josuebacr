@@ -13,17 +13,15 @@ $page = $_GET['page'] ?? 'login';
 // ========== RUTAS GET OBTENER DATOS ==========
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    // Obtener listado de talleres
-    if ($_GET['option'] ?? "" == "talleres_json") {
+    if (($_GET['option'] ?? '') == 'talleres_json') {
         $taller = new TallerController();
         $taller->getTalleresJson();
         exit;
     }
 
-    // Obtener solicitudes pendientes
-    if ($_GET['option'] ?? "" == "solicitudes_json") {
+    if (($_GET['option'] ?? '') == 'solicitudes_json') {
         $admin = new AdminController();
-        //$admin->getSolicitudesJson();
+        $admin->getSolicitudesJson();
         exit;
     }
 }
@@ -31,37 +29,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 // ========== RUTAS FORMULARIO POST ==========
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if ($_POST['option'] == "login") {
+    $option = $_POST['option'] ?? '';
+
+    if ($option == 'login') {
         $auth = new UserController();
         $auth->login();
         exit;
     }
 
-    if ($_POST['option'] == "register") {
+    if ($option == 'register') {
         $auth = new UserController();
         $auth->registro();
         exit;
     }
 
-    if ($_POST['option'] == "logout") {
+    if ($option == 'logout') {
         $auth = new UserController();
         $auth->logout();
         exit;
     }
 
-    if ($_POST['option'] == "solicitar") {
+    if ($option == 'solicitar') {
         $taller = new TallerController();
         $taller->solicitar();
         exit;
     }
 
-    if ($_POST['option'] == "aprobar") {
+    if ($option == 'aprobar') {
         $admin = new AdminController();
         $admin->aprobar();
         exit;
     }
 
-    if ($_POST['option'] == "rechazar") {
+    if ($option == 'rechazar') {
         $admin = new AdminController();
         $admin->rechazar();
         exit;
@@ -70,26 +70,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // ========== RUTAS DE VISTAS ==========
 switch ($page) {
-
-    case "talleres":
+    case 'talleres':
         $taller = new TallerController();
         $taller->index();
         break;
 
-    case "admin":
+    case 'admin':
         $admin = new AdminController();
         $admin->solicitudes();
         break;
 
-    case "logout":
+    case 'logout':
         $auth = new UserController();
         $auth->logout();
         break;
-    case "registro":
+
+    case 'registro':
         $auth = new UserController();
         $auth->showRegistro();
         break;
-    case "login":
+
+    case 'login':
     default:
         $auth = new UserController();
         $auth->showLogin();

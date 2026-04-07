@@ -1,36 +1,45 @@
-$(function () {
-    let formRegister = $("#formRegister");
-    const urlBase = "index.php"
+$(document).ready(function () {
+    $('#formRegister').on('submit', function (e) {
+        e.preventDefault();
 
-    formRegister.on("submit", function (event) {
-        event.preventDefault();
-        let username = $("#username");
-        let password = $("#password");
+        var username = $('#username').val().trim();
+        var password = $('#password').val().trim();
 
-        if (username.val() === "" || password.val() === "") {
-            alert("Debe completar todos los campos");
-        } else {
-            $.ajax({
-                url: urlBase,
-                type: 'POST',
-                data: $(this).serialize() + '&option=register',
-                dataType: 'json',
-                success: function (response) {
-                    if (response.response === '00') {
-                        window.location.href = 'index.php?page=talleres';
-                    } else {
-                        $('#mensaje').text(response.message).css('color', 'red').show();
-                    }
-                },
-                error: function () {
-                    $('#mensaje').text('Error de conexión').css('color', 'red').show();
-                }
-            });
-
+        if (!username || !password) {
+            mostrarMensaje('warning', 'Usuario y contraseña son obligatorios');
+            return;
         }
 
+        $.ajax({
+            url: 'index.php',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                option: 'register',
+                username: username,
+                nombre: $('#nombre').val(),
+                email: $('#email').val(),
+                password: password
+            },
+            success: function (data) {
+                if (data.response === '00') {
+                    mostrarMensaje('success', '✅ ' + data.message + ' — Redirigiendo...');
+                    setTimeout(function () {
+                        window.location.href = 'index.php?page=login';
+                    }, 1500);
+                } else {
+                    mostrarMensaje('danger', '❌ ' + data.message);
+                }
+            },
+            error: function (xhr) {
+                mostrarMensaje('danger', '❌ Error del servidor: ' + xhr.responseText);
+            }
+        });
+    });
 
-    })
-
-
-})
+    function mostrarMensaje(tipo, texto) {
+        $('#mensaje').html(
+            '<div class="alert alert-' + tipo + ' mt-2">' + texto + '</div>'
+        );
+    }
+});
