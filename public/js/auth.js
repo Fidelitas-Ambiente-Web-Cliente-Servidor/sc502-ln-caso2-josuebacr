@@ -1,18 +1,18 @@
 $(document).ready(function () {
 
-    // login
+    // LOGIN
     $('#formLogin').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
             url: 'index.php',
             method: 'POST',
+            dataType: 'json',
             data: {
                 option: 'login',
                 username: $('#username').val(),
                 password: $('#password').val()
             },
-            success: function (res) {
-                var data = typeof res === 'string' ? JSON.parse(res) : res;
+            success: function (data) {
                 if (data.response === '00') {
                     if (data.rol === 'admin') {
                         window.location.href = 'index.php?page=admin';
@@ -20,20 +20,21 @@ $(document).ready(function () {
                         window.location.href = 'index.php?page=talleres';
                     }
                 } else {
-                    alert(data.message);
+                    $('#mensaje').html('<div class="alert alert-danger mt-2">' + data.message + '</div>');
                 }
             },
-            error: function () {
-                alert('Error al conectar con el servidor');
+            error: function (xhr) {
+                $('#mensaje').html('<div class="alert alert-danger mt-2">Error del servidor: ' + xhr.responseText + '</div>');
             }
         });
     });
 
-    // Logout
+    // LOGOUT
     $('#btnLogout').on('click', function () {
         $.ajax({
             url: 'index.php',
             method: 'POST',
+            dataType: 'json',
             data: { option: 'logout' },
             success: function () {
                 window.location.href = 'index.php?page=login';

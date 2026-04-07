@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Darkside - Solicitudes Pendientes</title>
+    <title>Admin - Solicitudes Pendientes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/css/style.css">
 </head>
@@ -12,8 +12,8 @@
     <a class="navbar-brand fw-bold" href="index.php?page=talleres">Talleres</a>
     <div class="ms-auto d-flex align-items-center gap-3">
         <a href="index.php?page=admin" class="btn btn-light btn-sm">Gestionar Solicitudes</a>
-        <span class="text-white">Perfil de: <?= htmlspecialchars($_SESSION['user'] ?? 'Administrador') ?></span>
-        <button id="btnLogout" class="btn btn-outline-light btn-sm">Cerrar sesion</button>
+        <span class="text-white">Admin: <?= htmlspecialchars($_SESSION['user'] ?? 'Administrador') ?></span>
+        <button id="btnLogout" class="btn btn-outline-light btn-sm">Cerrar sesión</button>
     </div>
 </nav>
 

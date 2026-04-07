@@ -17,7 +17,7 @@
                 <input type="email" class="form-control mb-2" name="email" id="email" placeholder="Correo electrónico">
                 <input type="password" class="form-control mb-2" name="password" id="password" placeholder="Contraseña" required>
                 <button type="submit" class="btn btn-primary w-100">Registrarse</button>
-                <a href="index.php?page=login" class="btn btn-link w-100 mt-1">¿Ya tienes una super cuenta? Iniciar sesión</a>
+                <a href="index.php?page=login" class="btn btn-link w-100 mt-1">¿Ya tienes cuenta? Iniciar sesión</a>
             </form>
         </div>
     </div>

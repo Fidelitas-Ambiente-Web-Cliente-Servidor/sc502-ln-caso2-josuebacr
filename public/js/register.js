@@ -23,16 +23,16 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.response === '00') {
-                    mostrarMensaje('success', '✅ ' + data.message + ' — Redirigiendo...');
+                    mostrarMensaje('success', '' + data.message + ' — Redirigiendo...');
                     setTimeout(function () {
                         window.location.href = 'index.php?page=login';
                     }, 1500);
                 } else {
-                    mostrarMensaje('danger', '❌ ' + data.message);
+                    mostrarMensaje('danger', '' + data.message);
                 }
             },
             error: function (xhr) {
-                mostrarMensaje('danger', '❌ Error del servidor: ' + xhr.responseText);
+                mostrarMensaje('danger', 'Error del servidor: ' + xhr.responseText);
             }
         });
     });

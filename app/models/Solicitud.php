@@ -19,7 +19,7 @@ class Solicitud
         return $result->num_rows > 0;
     }
 
-    // Crea una nueva solicitud de inscripcion
+    // Crea una nueva solicitud de inscripción
     public function crear($usuarioId, $tallerId)
     {
         $query = "INSERT INTO solicitudes (taller_id, usuario_id, estado) VALUES (?, ?, 'pendiente')";

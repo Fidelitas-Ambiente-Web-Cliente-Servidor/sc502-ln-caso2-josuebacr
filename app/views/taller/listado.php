@@ -2,20 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Talleres Disponibles :D </title>
+    <title>Talleres Disponibles</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body class="bg-light">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 mb-4">
-    <a class="navbar-brand fw-bold" href="index.php?page=talleres">Nuestros Talleres</a>
+    <a class="navbar-brand fw-bold" href="index.php?page=talleres">Talleres</a>
     <div class="ms-auto d-flex align-items-center gap-3">
         <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
             <a href="index.php?page=admin" class="btn btn-warning btn-sm">Gestionar Solicitudes</a>
         <?php endif; ?>
-        <span class="text-white">👤 <?= htmlspecialchars($_SESSION['user'] ?? 'Usuario') ?></span>
-        <button id="btnLogout" class="btn btn-outline-light btn-sm">Cerrar sesion</button>
+        <span class="text-white"><?= htmlspecialchars($_SESSION['user'] ?? 'Usuario') ?></span>
+        <button id="btnLogout" class="btn btn-outline-light btn-sm">Cerrar sesión</button>
     </div>
 </nav>
 
@@ -28,14 +28,14 @@
             <tr>
                 <th>#</th>
                 <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Cupo Maximo</th>
+                <th>Descripción</th>
+                <th>Cupo Máximo</th>
                 <th>Cupos Disponibles</th>
-                <th>Accion</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody id="talleres-body">
-            <tr><td colspan="6" class="text-center">Cargando talleres....</td></tr>
+            <tr><td colspan="6" class="text-center">Cargando talleres...</td></tr>
         </tbody>
     </table>
 </div>

@@ -9,13 +9,13 @@
 <div class="container mt-5" style="max-width:400px">
     <div class="card shadow">
         <div class="card-body p-4">
-            <h4 class="mb-4">Iniciar Sesion</h4>
+            <h4 class="mb-4">Iniciar Sesión</h4>
             <div id="mensaje"></div>
             <form id="formLogin">
                 <input class="form-control mb-2" name="username" id="username" placeholder="Usuario" required>
                 <input type="password" class="form-control mb-2" name="password" id="password" placeholder="Contraseña" required>
                 <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-                <a href="index.php?page=registro" class="btn btn-link w-100 mt-1">¿No tienes una super cuenta? Registrarse</a>
+                <a href="index.php?page=registro" class="btn btn-link w-100 mt-1">¿No tienes cuenta? Registrarse</a>
             </form>
         </div>
     </div>
